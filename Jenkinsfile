@@ -34,7 +34,7 @@ pipeline {
             steps {
                 echo "Verifying deployment..."
                 sh "sleep 5"
-                sh "curl -f http://localhost:5000/health"
+                sh "curl -f http://localhost:5001/health"
                 echo "App is live and healthy!"
             }
         }
@@ -43,7 +43,7 @@ pipeline {
     post {
         success {
             echo "${APP_NAME} version ${VERSION} deployed successfully!"
-            echo "App is running at http://localhost:5000"
+            echo "App is running at http://localhost:5001"
         }
         failure {
             echo "Deployment failed — rolling back..."
