@@ -34,7 +34,7 @@ pipeline {
             steps {
                 echo "Verifying deployment..."
                 sh "sleep 5"
-                sh "docker exec flask-app curl -f http://localhost:5000/health"
+                sh "docker exec flask-app python3 -c \"import urllib.request; urllib.request.urlopen('http://localhost:5000/health'); print('Health check passed!')\""
                 echo "App is live and healthy!"
             }
         }
